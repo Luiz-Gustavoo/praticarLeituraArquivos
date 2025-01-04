@@ -1,6 +1,7 @@
 package br.com.praticaleituraarquivos.modelos;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class ManipularArquivo {
 
@@ -20,7 +21,7 @@ public class ManipularArquivo {
     }
 
     public void leituraFileReader() throws IOException {
-        File arquivoLeitura = new File(this.nomeArquivo);
+        File arquivoLeitura = new File(nomeArquivo);
 
         FileReader leitor = new FileReader(arquivoLeitura);
         int dadoArquivo = leitor.read();
@@ -30,5 +31,15 @@ public class ManipularArquivo {
             dadoArquivo = leitor.read();
         }
         leitor.close();
+    }
+
+    public void leituraScanner() throws FileNotFoundException {
+        File arquivoLeitura = new File(nomeArquivo);
+        Scanner leitor = new Scanner(arquivoLeitura);
+
+        while(leitor.hasNextLine()) {
+            String texto = leitor.nextLine();
+            System.out.println(texto);
+        }
     }
 }
